@@ -4,7 +4,8 @@
   "description": "Backend learnings",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev":"nodemon src/index.js"
   },
   "repository": {
     "type": "git",
@@ -14,10 +15,14 @@
     "javascript",
     "backend"
   ],
+  "type": "module",
   "author": "Santosh Kunjir",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/kunjirsantosh/backend/issues"
   },
-  "homepage": "https://github.com/kunjirsantosh/backend#readme"
+  "homepage": "https://github.com/kunjirsantosh/backend#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
 }
