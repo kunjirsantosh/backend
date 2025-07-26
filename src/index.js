@@ -1,9 +1,8 @@
 import dotenv from "dotenv";
 import connectDB from "./db/index.js";
-import express from "express";
+import {app} from "./app.js"
 
-
-const app = express();
+//const app = express();
 
 dotenv.config({
     path:"./env"
@@ -14,8 +13,8 @@ connectDB()
     app.on('error',(error) => {
         console.log("Error", error)
     });
-    app.listen(porcess.env.PORT || 8000,() => {
-        console.log(`Server is runnuing on port: ${procss.env.PORT}`);
+    app.listen(process.env.PORT || 8000,() => {
+        console.log(`Server is runnuing on port: ${process.env.PORT}`);
     })
     
 })  
