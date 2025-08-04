@@ -15,7 +15,9 @@ import {
 
 import { upload } from "../middlewares/multer.middleware.js";
 import { verifyJWT } from "../middlewares/auth.moddleware.js"
+
 const router = Router();
+    
 router.route("/register").post(
     upload.fields([
         {
@@ -33,8 +35,7 @@ router.route("/register").post(
 router.route("/login").post(loginUser);
 
 //secured routes
-
-router.route("/logout").post(verifyJWT, logoutUser);
+router.route("/logout").post(verifyJWT,logoutUser);
 router.route("/refresh-token").post(verifyJWT, refreshAccessToken);
 router.route("/change-password").post(verifyJWT, changeCurrentPassword);
 router.route("/current-user").get(verifyJWT, getCurrentUser);
