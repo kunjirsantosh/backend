@@ -108,17 +108,18 @@ const publishAVideo = asyncHandler(async (req, res) => {
     }
 
     const userId = req.user._id;
-
-    const videoLocalPath = req.files.videofile[0]?.path;
-    const videoThumbnailLocalPath = req.files.thumbnail[0]?.path;
-    console.log(req.files);
-    return true
+    if( !videoLocalPath || !videoThumbnailLocalPath){
+        throw new ApiError(400, "Video and thumbnail is required ")
+    }
+    console.log(req);
+  //  const videoLocalPath = req.files?.videoFile[0]?.path
+    const videoThumbnailLocalPath =  req.files?.thumbnail[0]?.path
     if( !videoLocalPath || !videoThumbnailLocalPath){
         throw new ApiError(400, "Video and thumbnail is required ")
     }
 
-    const video  = await uploadOnCloudinary(videoLocalPath);
-    const videoThumbnail  = await uploadOnCloudinary(videoThumbnailLocalPath);
+    const videofile  = await uploadOnCloudinary(videoLocalPath);
+    const thumbnail  = await uploadOnCloudinary(videoThumbnailLocalPath);
 
     if( !video || !videoThumbnail){
         throw new ApiError(500, "Something went wrong with uploading the video and thumbnail ")
@@ -128,8 +129,8 @@ const publishAVideo = asyncHandler(async (req, res) => {
         {
             title,
             description,
-            videoFile: video.url,
-            thumbnail: videoThumbnail.url,
+            videofile: videofile.url,
+            thumbnail: thumbnail.url,
             owner: userId,
             duration: video.duration
         }
