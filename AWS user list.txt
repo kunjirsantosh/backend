@@ -1,0 +1,5 @@
+AWS User details
+
+Account id: https://779846812618.signin.aws.amazon.com/console
+user-name: test-user
+password: ucWqQ38@ / Anvi@8805
